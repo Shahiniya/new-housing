@@ -1,5 +1,7 @@
-import Home from '../component/Home'
+import Home from '../pages/Home'
 import Generic from '../pages/Generic'
+
+
 export const navbar = [
     {
         id:1,

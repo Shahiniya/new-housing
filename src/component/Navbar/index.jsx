@@ -18,8 +18,8 @@ export const Navbar = () => {
                 <NavbarBody>
                     {navbar.map(({title,id,path})=>{
                         return <Link to={path} key={id} > 
-                        <h1>{title}</h1>
-                            </Link>;
+                                 {title}
+                             </Link>;
                     })}
                 </NavbarBody>
                 

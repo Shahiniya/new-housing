@@ -1,8 +1,35 @@
-import React from 'react'
 
-export const Generic = () => {
+import React from 'react'
+import { Container,Wrapper,Icon } from './style';
+
+export const Input = ({
+  children,
+  onClick,
+  height,
+  width,type,
+  mr,
+  ml,
+  mb,
+  mt,
+  pl,
+  onChange,
+  placeholder,
+}) => {
   return (
-    <div>Generic {window.locayion.pathname} </div>
+    <Wrapper mr={mr} ml={ml} mb={mb} mt={mt}>
+    <Icon>{children}</Icon>
+    <Container
+    onChange={onChange}
+    placeholder={placeholder}
+    pl={pl}
+    type={type}
+      width={width}
+      height={height}
+      onClick={onClick}
+    
+    />
+    </Wrapper>
   )
 }
-export default Generic;
+
+export default Input;

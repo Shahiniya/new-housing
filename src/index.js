@@ -4,6 +4,7 @@ import './index.css';
 import Root from './root';
 import {BrowserRouter} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import 'antd/dist/antd.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
