@@ -9,7 +9,7 @@ import { ReactComponent as search } from '../../assets/icon/search.svg';
 const Container = styled.div`
      display:flex;
      justify-content:center;
-     padding: 10px 0;
+     margin: 10px 0 ;
      /* width:100%; */
 `;
 

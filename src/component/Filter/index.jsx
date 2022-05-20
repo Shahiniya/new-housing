@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useRef,useEffect} from 'react'
 import { Container, Wrapper,Icon, Advanced, Section } from './style';
 import {Button,Input} from '../Generic';
 import {Popover} from 'antd';
 
 export const Filter = () => {
+    // const popoverRef = useRef('click');
+    // useEffect(()=>{popoverRef.current?.trigger='click'},[])
     const advancedSearch = <Advanced >
     <Advanced.Title>Address</Advanced.Title>
     <Section>
@@ -24,6 +26,7 @@ export const Filter = () => {
     <Input mr={20} placeholder={'Max Price'} /> 
     </Section>
     <Section>
+    <Button width='131px' ml={20} type={'secondary'}>Cancel</Button>
     <Button width='131px' ml={20} type={'primary'}>Search</Button>
     </Section>
     </Advanced>
@@ -38,7 +41,12 @@ export const Filter = () => {
             <Icon.Home/>
         </Input>
 
-        <Popover placement='bottomRight' content={advancedSearch} trigger={'click'}>
+        <Popover
+        // ref={popoverRef}
+        placement='bottomRight'
+         content={advancedSearch} 
+         trigger={'click'}
+         >
             <Button width='131px' ml={20} type='secondary'> 
            <Icon.Setting/> Advanced</Button>
         </Popover>
