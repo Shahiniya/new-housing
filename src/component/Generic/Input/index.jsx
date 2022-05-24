@@ -14,6 +14,7 @@ export const Input = ({
   pl,
   onChange,
   placeholder,
+  name
 }) => {
   return (
     <Wrapper mr={mr} ml={ml} mb={mb} mt={mt}>
@@ -26,6 +27,7 @@ export const Input = ({
       width={width}
       height={height}
       onClick={onClick}
+      name={name}
     
     />
     </Wrapper>

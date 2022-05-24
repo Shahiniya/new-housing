@@ -7,11 +7,16 @@ const Container = styled.div`
 
 `;
 const Wrapper = styled.div`
-   display:flex;
+   /* display:flex;
    max-width:1440px;
    /* flex-direction:column; */
-   flex-wrap: wrap;
-   gap:20px;
+   /* flex-wrap: wrap;
+   gap:20px; */
+   display:grid;
+    grid-gap:20px;
+    grid-template-columns:repeat(auto- fit, minmax(300px ,1fr));
+   width:100%;
+   max-width:var(--width);
    padding:0 130px;
 
 `;

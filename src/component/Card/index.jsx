@@ -11,7 +11,7 @@ export const Card = ({info,mr}) => {
         
         <InfoWrapper>
         <User>
-          <User.Img src={info?.user?.img || nouser} />
+          <User.Img src={info?.user?.imgPath || nouser} />
         </User>
             <div className='subtitle' style ={{whiteSpace: 'nowrap' , overflow:'hidden' }} >{info?.description}</div>
             <div className='description' >

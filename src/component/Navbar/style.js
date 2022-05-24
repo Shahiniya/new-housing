@@ -12,6 +12,7 @@ const Container = styled.div`
     align-items:center;
     justify-content:center;
     background: var(--primaryColor);
+    padding:0 130px;
 
     -webkit-touch-callout:none;//10S Safari;
     -webkit-user-select:none;//Safari;
