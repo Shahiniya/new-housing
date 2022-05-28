@@ -16,14 +16,15 @@ export const Navbar = () => {
               <Logo.Title>Houzing</Logo.Title>
             </Logo>
                 <NavbarBody>
-                    {navbar.map(({title,id,path})=>{
-                        return <Link to={path} key={id} > 
+                    {navbar.map(({title,id,path,hidden})=>{
+                        return (
+                            !hidden && (<Link to={path} key={id} > 
                                  {title}
-                             </Link>;
+                             </Link>))
                     })}
                 </NavbarBody>
                 
-                <Button  onClick={() => navigate('/login')} width={'120px'}>Login</Button>
+                <Button  onClick={() => navigate('/signin')} width={'120px'}>Login</Button>
                 
             </NavbarWrapper>
         </Container>

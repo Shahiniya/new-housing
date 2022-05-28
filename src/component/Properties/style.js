@@ -13,10 +13,10 @@ const Wrapper = styled.div`
    /* flex-wrap: wrap;
    gap:20px; */
    display:grid;
-    grid-gap:20px;
-    grid-template-columns:repeat(auto- fit, minmax(300px ,1fr));
+   grid-gap:20px;
+   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
    width:100%;
-   max-width:var(--width);
+   max-width:var(--width); 
    padding:0 130px;
 
 `;

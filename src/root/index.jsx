@@ -9,12 +9,22 @@ export const Root = () => {
     <>
     <Routes>
     <Route path='/' element={<Navigate to={'/home'} />} />
+    
+    <Route >
+    {
+      navbar.map(({id,path,Element,hidden}) => {
+        return  hidden && <Route key={id} path={path} element={Element}/>
+        
+      })
+    }
+    </Route>
+
+
     <Route element={<Navbar/>}>
         {
-          navbar.map(({id,path,Element}) => {
-            return (
-              <Route key={id} path={path} element={Element}/>
-            ) 
+          navbar.map(({id,path,Element,hidden}) => {
+            return  !hidden && <Route key={id} path={path} element={Element}/>
+            
           })
         }
         </Route>

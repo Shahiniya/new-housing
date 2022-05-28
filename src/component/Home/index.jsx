@@ -4,6 +4,8 @@ import Filter  from '../Filter'
 import Carousel  from './Carousel'
 // import { Card } from '../Card';
 import Recommended from '../Recommended';
+import Categories from '../Categories';
+
 
 
 export const Home = () => {
@@ -12,6 +14,8 @@ export const Home = () => {
       <Filter/>
       <Carousel/>
       <Recommended/>
+      <Categories/>
+
     </Container>
   )
 };

@@ -3,15 +3,22 @@ import { Container, Wrapper,Icon, Advanced, Section } from './style';
 import {Button,Input} from '../Generic';
 import {Popover} from 'antd';
 import { useNavigate ,useLocation} from 'react-router-dom';
+import useSearch from '../../hooks/useSearch';
+import UseReplace from '../../hooks/useReplace';
+
 
 export const Filter = () => {
 
   const navigate = useNavigate();
   const {pathname} = useLocation();
+  const query = useSearch();
+//  console.log(useReplace(),'useReplace')
+
 
   const onChange = ({target}) => {
   const {value,name} = target;
-  navigate(`${pathname}?${name}=${value}`)
+  // navigate(`${pathname}?${name}=${value}`)
+  navigate(`${UseReplace(name,value)}`)
 
 } 
  
@@ -20,16 +27,24 @@ export const Filter = () => {
     const advancedSearch = <Advanced >
     <Advanced.Title>Address</Advanced.Title>
     <Section>
-     <Input placeholder={'Country'} /> 
-     <Input placeholder={'Region'} />
-     <Input onChange={onChange} name='city' placeholder={'City'} />
+     <Input onChange={onChange} 
+     defaultValue={query.get('country')} 
+     name='country' placeholder={'Country'} /> 
+
+     <Input onChange={onChange} 
+     defaultValue={query.get('region')} 
+     name='region' placeholder={'Region'} />
+
+     <Input onChange={onChange}
+      defaultValue={query.get('city')} 
+      name='city' placeholder={'City'} />
      <Input placeholder={'ZIP code'} />
      </Section>
     <Advanced.Title>Apartment info</Advanced.Title>
     <Section>
-    <Input  placeholder={'Room'} /> 
-    <Input  placeholder={'Size'} /> 
-    <Input  placeholder={'Sort'} /> 
+    <Input  placeholder={'Address'} /> 
+    <Input  placeholder={'House name'} /> 
+    <Input  placeholder={'Rooms'} /> 
         </Section>
     <Advanced.Title>Price</Advanced.Title>
     <Section>

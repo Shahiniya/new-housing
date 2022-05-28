@@ -1,9 +1,9 @@
 
-import React from 'react'
+import React, {forwardRef} from 'react'
 import { Container,Wrapper,Icon } from './style';
 
-export const Input = ({
-  children,
+export const Input = forwardRef((
+ { children,
   onClick,
   height,
   width,type,
@@ -14,8 +14,12 @@ export const Input = ({
   pl,
   onChange,
   placeholder,
-  name
-}) => {
+  name,
+  defaultValue,
+  },ref
+  
+  )=>{
+
   return (
     <Wrapper mr={mr} ml={ml} mb={mb} mt={mt}>
     <Icon>{children}</Icon>
@@ -28,10 +32,12 @@ export const Input = ({
       height={height}
       onClick={onClick}
       name={name}
+      defaultValue={defaultValue}
+      
     
     />
     </Wrapper>
   )
-}
+  })
 
 export default Input;
