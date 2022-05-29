@@ -1,31 +1,45 @@
 import React , {useState} from 'react'
-import { useQuery, useMutation } from 'react-query'
+import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 import {Input,Button} from '../../component/Generic'
 import { Container, Wrapper } from './style'
+
+
+const {REACT_APP_BASE_URL : url} = process.env
 
 export const Signin = () => {
 
     const [email,setEmail] = useState('')
     const [pw,setPw] = useState('')
+    const navigate = useNavigate()
 
-    const {mutate} = useMutation(()=> {fetch('/public/auth/login',{method:'POST'}).then((res) => res.json())
-  },
-     {
-       onSuccess:(res) => {
-         console.log(res,'res')
-       },
-       onError: (res) => {
-        console.log(res, 'error')
-      },
-       
-       }
+    const {mutate} = useMutation(()=> {return fetch(`${url}/public/auth/login`,
+    {method:'POST',
+    headers:{
+    'Content-type':'application/json'}, 
+    body:JSON.stringify({email,password:pw}) })
+    .then((res) => res.json())
+  }
+     
       
     );
 
     const onSubmit = ()=>{
       console.log(email);
       console.log(pw);
-      mutate()
+      mutate('hey',
+      {
+        onSuccess:(res) => {
+          // console.log(res,'res')
+          localStorage.setItem('token', res?.authenticationToken)
+          console.log(res, 'token')
+         if (res?.ok) navigate('/home')
+        },
+        onError: (res) => {
+         console.log(res, 'error')
+       },
+        
+        })
 
     }
   return (
