@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import AliceCarousel from 'react-alice-carousel';
-import {ReactComponent as arrow} from '../../assets/icon/arrow.svg'
+import {ReactComponent as arrow} from '../../../assets/icon/arrow.svg'
 
 const Container = styled.div`
     display:flex;
@@ -87,4 +87,30 @@ const ACarousel = styled(AliceCarousel)`
 
 
 `;
-export {Container,Wrapper,Icon,Carousel,ACarousel}
+
+const CategoryWrapper = styled.div`
+     display:flex;
+     width:280px;
+     height:350px;
+     position:relative;
+     /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(); */
+/* XXL */
+
+     box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06), 0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
+     border-radius: 3px;
+     transform: matrix(-1, 0, 0, 1, 0, 0);
+`;
+
+const Details = styled.div`
+     display:flex;
+     flex-direction:column;
+`;
+
+const Img = styled.img`
+   width:280px;
+   height:350px;
+`;
+
+export {Container,Details,
+     CategoryWrapper,Wrapper,
+     Icon,Carousel,ACarousel,Img}

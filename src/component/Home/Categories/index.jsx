@@ -1,26 +1,25 @@
 import React, { useRef,useState } from 'react'
-import { Container, Wrapper ,Carousel,Icon} from './style'
-import Card from '../Card';
+import { Container, Wrapper 
+  ,Carousel,Icon, 
+  CategoryWrapper, Img} from './style'
+import Card from '../../Card';
 import AliceCarousel from 'react-alice-carousel';
 import { useQuery } from 'react-query';
+import uy1 from '../../../assets/image/uy1.png'
+
  const {REACT_BASE_APP_URL: url} = process.env 
 
-const Title = ({title})=>{
-  return <h1>{title}</h1>
+const Category = ({title})=>{
+  return <CategoryWrapper>
+      <Img  src={uy1} alt='' />
+  </CategoryWrapper>
 }
 
 
 
 export const Categories = () => {
   const slider = useRef();
-  const items = [
-    <Card  mr={20}/>,
-    <Card  mr={20}/>,
-    <Card  mr={20}/>,
-    <Card  mr={20}/>,
-    // <Card  mr={10}/>,
-      ]
-    const [list,setList] = useState([])
+ const [list,setList] = useState([])
 
     useQuery(" ", () => { 
       return fetch(`${url}/v1/categories`, 
@@ -33,9 +32,9 @@ export const Categories = () => {
       {
         onSuccess: (res) => {
           console.log(res,'res')
-          let response = res?.dataList?.[0]?.map((value)=> (
+          let response = res?.dataList[0]?.map((value)=> (
           <div style={{height:'200px', width:'500px'}}>
-             <Title title={value} />
+             <Category title={value} />
           </div>
           ))
           setList(response || [])

@@ -4,7 +4,7 @@ import Filter  from '../Filter'
 import Carousel  from './Carousel'
 // import { Card } from '../Card';
 import Recommended from '../Recommended';
-import Categories from '../Categories';
+import Categories from './Categories';
 
 
 
