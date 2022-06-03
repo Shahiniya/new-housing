@@ -21,7 +21,7 @@ export const Properties = () => {
       {
         onSuccess:(res)=> {
         
-          setData(res?.dataList[0] || []);
+          setData(res?.data || []);
         }
       })
 console.log(data,'res');

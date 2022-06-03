@@ -1,116 +1,109 @@
 import styled from 'styled-components';
-import AliceCarousel from 'react-alice-carousel';
+// import AliceCarousel from 'react-alice-carousel';
 import {ReactComponent as arrow} from '../../../assets/icon/arrow.svg'
 
 const Container = styled.div`
-    display:flex;
-    flex-direction:column;
-    margin-top:96px;
-    /* background:red; */
-    /* justify-content:center; */
-
-`;
-const Wrapper = styled.div`
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:100%;
-    /* background:red; */
-    padding: 0px 130px;
-    margin-top:20px;
-    position:relative;
-
-
-`;
-const Carousel = styled.div`
-    width:1440px;
-    display:flex;
-    .alice-carousel__stage-item{
-    width:400px!important;
-     };
-     .alice-carousel__prev-btn{
-    display:none!important;
-     };
-`;
-const Icon = styled.div`
-`;
-Icon.Left = styled(arrow)`
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:absolute;
-      top:50%;
-      left:20px;
-      transform:translate(100%, -100%) rotate(90deg);
-      width:45px;
-      height:45px;
-      color:white;
-      background:#e6e9ec;
-      padding:12px;
-      opacity:0.5;
-      border-radius:50%;
-      z-index: 999 ;
-      cursor:pointer;
-      :hover{
-           opacity:0.97;
-      }
-& path{
-     fill:#0d263b;
-}
-`;
-Icon.Right = styled(arrow)`
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:absolute;
-      top:50%;
-      right:20px;
-      transform:translate(-100%, -50%) rotate(-90deg);
-      width:45px;
-      height:45px;
-      color:white;
-      background:#e6e9ec;
-      padding:12px;
-      opacity:0.5;
-      border-radius:50%;
-      z-index: 999 ;
-      cursor:pointer;
-      :hover{
-           opacity:0.97;
-      }
-& path{
-     fill:#0d263b;
-}
-
-`;
-const ACarousel = styled(AliceCarousel)`
-
-
+  display: flex;
+  flex-direction: column;
+  margin-top: 95px;
+ 
 `;
 
+const Wrapper = styled("div")`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 0 130px;
+`;
+const Cards = styled("div")`
+  display: flex;
+  .alice-carousel__prev-btn,
+  .alice-carousel__next-btn {
+    display: none;
+  }
+  width: 1440px;
+  margin-top: 32px;
+  justify-content: space-between;
+`;
+
+const ArrowLeft = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  top: 50%;
+  right: 20px;
+  transform: translate(-50%, -100%);
+  width: 45px;
+  height: 45px;
+  color: black;
+  background: white;
+  opacity: 0.5;
+  padding-left: 10px;
+  box-shadow: 0px 10px 50px rgba(13, 38, 59, 0.1);
+  filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06))
+    drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06))
+    drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  :hover {
+    opacity: 1;
+  }
+  :active {
+    opacity: 0.7;
+  }
+`;
+
+const ArrowRight = styled(ArrowLeft)`
+  left: 50px;
+  transform: translate(50%, -100%);
+  padding-left: 0;
+  padding-right: 10px;
+`;
 const CategoryWrapper = styled.div`
-     display:flex;
-     width:280px;
-     height:350px;
-     position:relative;
-     /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(); */
-/* XXL */
-
-     box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06), 0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
-     border-radius: 3px;
-     transform: matrix(-1, 0, 0, 1, 0, 0);
-`;
-
+  display: flex;
+  position: relative;
+  width: 280px;
+  max-width: 280px;
+  height: 350px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url(.jpg);
+  box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
+    0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  cursor: pointer;
+  `;
 const Details = styled.div`
-     display:flex;
-     flex-direction:column;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #ffffff;
 `;
 
 const Img = styled.img`
-   width:280px;
-   height:350px;
+  width: 280px;
+  height: 350px;
+  margin-left:20px;
 `;
 
-export {Container,Details,
-     CategoryWrapper,Wrapper,
-     Icon,Carousel,ACarousel,Img}
+export {
+  Container,
+  Cards,
+  ArrowLeft,
+  Wrapper,
+  ArrowRight,
+  CategoryWrapper,
+  Details,
+  Img,
+};
