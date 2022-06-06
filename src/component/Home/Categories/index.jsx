@@ -5,19 +5,23 @@ import { Container, Wrapper
 import Card from '../../Card';
 import AliceCarousel from 'react-alice-carousel';
 import { useQuery } from 'react-query';
-import uy1 from '../../../assets/image/uy1.png'
+import uy4 from '../../../assets/image/uy4.png'
 import {useHttp} from  '../../../hooks/usehttp'
+import { useNavigate } from 'react-router-dom';
  const {REACT_BASE_APP_URL: url} = process.env 
 
-const Category = ({value})=>{
-  return <CategoryWrapper>
-      <Img  src={uy1} alt='' />
+const Category = ({value,id})=>{
+  const navigate = useNavigate()
+
+    // const goto = () =>{
+    //   navigate(`/properties/category_id=${id}`)
+    // }
+
+  return <CategoryWrapper >
+      <Img  src={uy4} alt='test' />
       <Details>{value.name}</Details>
   </CategoryWrapper>
 }
-
-
-
 export const Categories = () => {
   const slider = useRef();
  const [list,setList] = useState([])
@@ -42,6 +46,7 @@ export const Categories = () => {
       <Wrapper>
         <Cards>
           <AliceCarousel
+         
             arrows={false}
             ref={slider}
             autoWidth

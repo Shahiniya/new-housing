@@ -11,12 +11,13 @@ const Container = styled(Carousel)`
       width:100%; 
       /* height:570px; */
       height:fit-content;
-
+      position: relative;
+     background:black;
 `;
 const Img = styled.img`
      background:black;
      width:100%;
-     height:500px;
+     height:600px;
 `;
 
 const Icon = styled.div`
@@ -70,4 +71,12 @@ Icon.Right = styled(arrow)`
 }
 
 `;
-export  { Container,Img,Icon,Wrapper};
+
+const Opacity = styled.div`
+     background:black;
+     position:absolute;
+     width:100%;
+     height:100%;
+     opacity:0.5;
+`;
+export  { Container,Img,Icon,Wrapper,Opacity};
