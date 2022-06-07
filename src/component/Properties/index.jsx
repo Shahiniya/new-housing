@@ -13,6 +13,7 @@ export const Properties = () => {
   const [data,setData] = useState([])
   const {search} = useLocation();
   const navigate = useNavigate();
+  
   useQuery(
     ['get data', search],
    ()=> {
@@ -33,7 +34,7 @@ const onSelect = (id)=>{
     <Container>
     
     <Filter/>
-      <div className='title' >Proporties</div>
+      <div className='title' >Properties</div>
       <div className='description center' >Siz orzu qilgan,siz izlagan shinam va arzon uylar</div>
     <Total className='description'>
         {data?.length} Total

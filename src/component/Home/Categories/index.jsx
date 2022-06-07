@@ -17,9 +17,10 @@ const Category = ({value,id})=>{
     //   navigate(`/properties/category_id=${id}`)
     // }
 
-  return <CategoryWrapper >
+  return <CategoryWrapper onClick={()=> 
+    navigate(`/properties?category_id=${id}`)} >
       <Img  src={uy4} alt='test' />
-      <Details>{value.name}</Details>
+      <Details>{value}</Details>
   </CategoryWrapper>
 }
 export const Categories = () => {
@@ -27,13 +28,15 @@ export const Categories = () => {
  const [list,setList] = useState([])
  const { request } = useHttp();
 
- useQuery("", () => request({ url: '/v1/categories/list' }), {
+ useQuery("", () => request({ url: '/v1/categories/list' })
+ .then((res)=> res.json()), {
   onSuccess: (res) => {
     // console.log(res, "res");
-    let respons = res?.data?.map((value) => (
-      <Category key={value.id} value={value} />
+    let response = res?.data?.map((value,index) => (
+      <Category key={value.id} value={value} id={index+1}/>
     ));
-    setList(respons || []);
+    setList(response || []);
+    console.log(res, 'res')
   },
 });
 

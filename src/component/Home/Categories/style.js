@@ -5,8 +5,12 @@ import {ReactComponent as arrow} from '../../../assets/icon/arrow.svg'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 95px;
- 
+  .alice-carousel__stage{
+    display: flex;
+    gap: 20px;
+  }
 `;
 
 const Wrapper = styled("div")`
@@ -14,7 +18,8 @@ const Wrapper = styled("div")`
   justify-content: center;
   position: relative;
   width: 100%;
-  padding: 0 130px;
+  /* padding: 0 130px; */
+  /* background-color:violet; */
 `;
 const Cards = styled("div")`
   display: flex;
@@ -25,6 +30,11 @@ const Cards = styled("div")`
   width: 1440px;
   margin-top: 32px;
   justify-content: space-between;
+  gap: 20px;
+  max-width: 1440px;
+  /* padding: 0 130px; */
+  /* background-color:red; */
+
 `;
 
 const ArrowLeft = styled.div`
@@ -66,8 +76,8 @@ const ArrowRight = styled(ArrowLeft)`
 const CategoryWrapper = styled.div`
   display: flex;
   position: relative;
-  width: 280px;
   max-width: 280px;
+  width: 280px;
   height: 350px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
     url(.jpg);
@@ -75,6 +85,8 @@ const CategoryWrapper = styled.div`
     0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
   border-radius: 5px;
   cursor: pointer;
+  /* gap:20px; */
+
   `;
 const Details = styled.div`
   display: flex;
@@ -95,6 +107,7 @@ const Img = styled.img`
   width: 280px;
   height: 350px;
   border-radius:5px;
+  /* gap:20px; */
   /* margin-left:20px; */
 `;
 
