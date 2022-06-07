@@ -29,7 +29,7 @@ export const Categories = () => {
 
  useQuery("", () => request({ url: '/v1/categories/list' }), {
   onSuccess: (res) => {
-    console.log(res, "res");
+    // console.log(res, "res");
     let respons = res?.data?.map((value) => (
       <Category key={value.id} value={value} />
     ));

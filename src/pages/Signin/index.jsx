@@ -25,14 +25,14 @@ export const Signin = () => {
     );
 
     const onSubmit = ()=>{
-      console.log(email);
-      console.log(pw);
+      // console.log(email);
+      // console.log(pw);
       mutate('hey',
       {
         onSuccess:(res) => {
           // console.log(res,'res')
           localStorage.setItem('token', res?.authenticationToken)
-          console.log(res, 'token')
+          // console.log(res, 'token')
          if (res?.authenticationToken) navigate('/home')
         },
         onError: (res) => {

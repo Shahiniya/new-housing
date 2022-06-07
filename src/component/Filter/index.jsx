@@ -1,18 +1,25 @@
-import React,{useRef,useState} from 'react'
+import React,{useEffect, useRef,useState} from 'react'
 import { Container, Wrapper,Icon, Advanced, Section } from './style';
 import {Button,Input} from '../Generic';
-import {Popover} from 'antd';
+import {Popover,Select} from 'antd';
 import { useNavigate ,useLocation} from 'react-router-dom';
 import useSearch from '../../hooks/useSearch';
 import UseReplace from '../../hooks/useReplace';
 import { useQuery } from 'react-query';
 
+const {Option} = Select;
 
 export const Filter = () => {
-
-  const navigate = useNavigate();
   const query = useSearch();
+  const navigate = useNavigate();
   const [list,setList] = useState([])
+  const [def,setDef] = useState(Number(query.get('category_id')));
+
+  useEffect(()=>{
+    let res = list.filter((value,index)=> index == Number( query.get('category_id')))
+    res && setDef( res[0]
+      )
+  },[])
 
   const [state,setState] = useState({
     country : query.get('country'),
@@ -52,8 +59,10 @@ useQuery(
 } 
 
 const onSelect = (target) => {
-  navigate(`${UseReplace(target?.value)}`)
-}
+  setDef(target);
+  navigate(`${UseReplace('category_id',target)}`)
+};
+
   const onClear = () => {
     setState({
       country : '',
@@ -69,9 +78,9 @@ const onSelect = (target) => {
     navigate(`/properties`)
 
   }
-    // const popoverRef = useRef('click');
-    // useEffect(()=>{popoverRef.current?.trigger='click'},[])
-    const advancedSearch = <Advanced >
+    
+    const advancedSearch =()=> (
+      <Advanced >
     <Advanced.Title>Address</Advanced.Title>
     <Section>
      <Input onChange={onChange} 
@@ -97,22 +106,27 @@ const onSelect = (target) => {
     <Section>
     <Input value={state.minPrice} placeholder={'Min Price'} /> 
     <Input value={state.maxPrice} placeholder={'Max Price'} /> 
-    <select name='' id='' defaultValue={query.get('category_id')}
-      onChange={onSelect} >
+    <Select 
+    name=''
+     id='' 
+    value={def}
+    onChange={onSelect} >
       {
-        list.map((value,id)=>{
-          return <option key={id} value={value}>{value}</option>
+        list.map((value,index)=>{
+          return <Option key={index} value={index+1}>{value}</Option>
         })
       }
-    </select>
+    </Select>
     </Section>
     <Section>
-    <Button width='131px'  type={'primary'} onClick={onClear} >Clear</Button>
+    <Button width='131px'  type={'primary'}
+     onClick={onClear} >Clear</Button>
     </Section>
     </Advanced>
+  );
 
-
-  return (
+console.log(def,'def')
+  return(
     <Container>
         <Wrapper>
         <Input 
@@ -122,13 +136,12 @@ const onSelect = (target) => {
         </Input>
 
         <Popover
-        // ref={popoverRef}
-        placement='bottomRight'
-         content={advancedSearch} 
+         placement='bottomRight'
+         content={()=>advancedSearch(def)} 
          trigger={'click'}
          >
-            <Button width='131px' ml={20} type='secondary'> 
-           <Icon.Setting/> Advanced</Button>
+       <Button width='131px' ml={20} type='secondary'> 
+          <Icon.Setting/> Advanced</Button>
         </Popover>
             <Button width='131px' ml={20} type='primary' >
            <Icon.Search/> Search</Button>

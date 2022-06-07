@@ -3,7 +3,7 @@ import Card from '../Card';
 import Filter from '../Filter';
 import { Container,Total, Wrapper} from './style';
 import {useQuery} from 'react-query'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // import useSearch from '../../hooks/useSearch';
 
 
@@ -12,7 +12,7 @@ export const Properties = () => {
 
   const [data,setData] = useState([])
   const {search} = useLocation();
-
+  const navigate = useNavigate();
   useQuery(
     ['get data', search],
    ()=> {
@@ -24,8 +24,11 @@ export const Properties = () => {
           setData(res?.data || []);
         }
       })
-console.log(data,'res');
+// console.log(data,'res');
 
+const onSelect = (id)=>{
+ navigate(`/properties/:${id}`)
+}
   return (
     <Container>
     
@@ -36,8 +39,8 @@ console.log(data,'res');
         {data?.length} Total
     </Total>
     <Wrapper>
-     {data.map((value,id) => {
-      return <Card key={id} info={value} />
+     {data.map((value) => {
+      return <Card onClick={()=>onSelect(value.id)} key={value.id} info={value} />
      })}
       
     </Wrapper>

@@ -2,11 +2,11 @@ import React from 'react'
 import { Container, Img, Info, InfoWrapper ,Icons,Footer,User} from './style';
 import noimg from '../../assets/image/uy1.png';
 import nouser from '../../assets/image/agent.png';
-// import { Icon } from '../Filter/style';
+// import { Icon } from '../Fil[ter/style';
 
-export const Card = ({info,mr}) => {
+export const Card = ({info,mr,onClick}) => {
   return (
-    <Container mr={mr}>
+    <Container mr={mr} onClick={onClick}>
         <Img src={info?.attachments[0]?.imgPath || noimg} />
         
         <InfoWrapper>

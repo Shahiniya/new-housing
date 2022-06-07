@@ -1,7 +1,8 @@
 import Home from '../pages/Home'
 import Generic from '../pages/Generic'
 import Properties from '../pages/Properties'
-import Signin from '../pages/Signin'
+import Signin from '../pages/Signin';
+import SelectedHouse from '../pages/SelectedHouse';
 
 
 
@@ -24,6 +25,17 @@ export const navbar = [
         search:'?',
         hidden:false,
         priate:false,
+    },
+    {
+        id:2,
+        title: 'Selected House',
+        path:'/properties/:id',
+        Element:<SelectedHouse/>,
+        search:'?',
+        hidden:true,
+        priate:false,
+        useParams:true,
+
     },
     {
         id:3,

@@ -12,8 +12,8 @@ export const Root = () => {
     
     <Route >
     {
-      navbar.map(({id,path,Element,hidden}) => {
-        return  hidden && <Route key={id} path={path} element={Element}/>
+      navbar.map(({id,path,Element,hidden,useParams}) => {
+        return !useParams && hidden && <Route key={id} path={path} element={Element}/>
         
       })
     }
@@ -22,9 +22,9 @@ export const Root = () => {
 
     <Route element={<Navbar/>}>
         {
-          navbar.map(({id,path,Element,hidden}) => {
-            return  !hidden && <Route key={id} path={path} element={Element}/>
-            
+          navbar.map(({id,path,Element,hidden,useParams}) => {
+            return ((useParams || !hidden) && (<Route key={id} path={path} element={Element}/>
+            ))
           })
         }
         </Route>
