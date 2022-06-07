@@ -22,7 +22,7 @@ export const SelectedHouse = () => {
     },
       {
         onSuccess:(res)=>{
-          // console.log(res,'res');
+          console.log(res,'res');
           setState(res?.data)
         },
         keepPreviousData:true,
