@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ReactComponent as bed } from '../../assets/icon/bed.svg';
+// import { ReactComponent as bed } from '../../assets/icon/bed.svg';
 import { ReactComponent as homes } from '../../assets/icon/homes.svg';
-import { ReactComponent as price } from '../../assets/icon/price.svg';
+// import { ReactComponent as price } from '../../assets/icon/price.svg';
 import { ReactComponent as advanced } from '../../assets/icon/setting.svg';
 import { ReactComponent as search } from '../../assets/icon/search.svg';
 

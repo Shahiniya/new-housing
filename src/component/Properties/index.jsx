@@ -4,6 +4,7 @@ import Filter from '../Filter';
 import { Container,Total, Wrapper} from './style';
 import {useQuery} from 'react-query'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useHttp } from '../../hooks/usehttp';
 // import useSearch from '../../hooks/useSearch';
 
 
@@ -13,12 +14,12 @@ export const Properties = () => {
   const [data,setData] = useState([])
   const {search} = useLocation();
   const navigate = useNavigate();
-  
+  const {request} = useHttp();
   useQuery(
     ['get data', search],
-   ()=> {
-    return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
-      },
+   ()=>  request({url:`/v1/houses/list${search}`,token:true}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
+      
+  ,
       {
         onSuccess:(res)=> {
         

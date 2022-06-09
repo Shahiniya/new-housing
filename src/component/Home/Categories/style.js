@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import AliceCarousel from 'react-alice-carousel';
-import {ReactComponent as arrow} from '../../../assets/icon/arrow.svg'
+// import AliceCarousel from 'react-alice-carousel';
+// import {ReactComponent as arrow} from '../../../assets/icon/arrow.svg'
 
 const Container = styled.div`
   display: flex;

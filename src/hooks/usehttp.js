@@ -20,7 +20,7 @@ export const useHttp = () => {
     if (res?.success) {
       return res;
     } else {
-      throw new Error(res?.message || "sms yoq");
+      throw new Error(res?.message || "Something wrong");
     }
   };
 
