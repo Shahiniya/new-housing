@@ -9,11 +9,22 @@ import {useHttp} from  '../../../hooks/usehttp'
 import { useNavigate } from 'react-router-dom';
 //  const {REACT_BASE_APP_URL: url} = process.env 
 
+
+// const getIcon = (type) =>{
+//   switch(type){
+//     case 'Villa' : return 'Villa Icon';
+//     default:
+//       return 'dala hovli icon'; 
+//   }
+// }
+
+
+
 const Category = ({value,id})=>{
 
   const navigate = useNavigate();
   const goto = () =>{
-    navigate(`/properties?category_id=${value?.id}`);
+    navigate(`/properties?category_id=${value.id}`);
   };
   return(
       <CategoryWrapper onClick={goto}>

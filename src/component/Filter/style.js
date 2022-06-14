@@ -17,6 +17,8 @@ const Container = styled.div`
 const Wrapper = styled.div`
      display:flex;
      width:1440px;
+    /* width:100%; */
+
 `;
 const Icon = styled.div``;
 Icon.Home = styled(homes)`

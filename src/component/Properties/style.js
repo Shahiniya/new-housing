@@ -25,7 +25,7 @@ const Total = styled.div`
     max-width:1440px;
     text-align:start;
     width:100%;
-   padding:0 130px;
+   padding:0 10px;
 
 `;
 export {Container,Total,Wrapper}

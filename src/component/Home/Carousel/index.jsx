@@ -11,14 +11,14 @@ export const Carousel = () => {
     <Wrapper>
     <Icon.Left  onClick={()=> slider.current.prev()}/>
     <Icon.Right onClick={()=> slider.current.next()}/>
-
-    <Container  autoplay dots ref={slider} >
+    <div style={{position:'relative'}}>
     <Opacity/>
+    <Container  autoplay dots ref={slider} >
       <Img src={img1}/>
       <Img src={img2}/>
       <Img src={img3}/>
-
     </Container>
+    </div>
     </Wrapper>
   )
 };

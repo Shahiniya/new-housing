@@ -4,7 +4,7 @@ import './index.css';
 import Root from './root';
 import {BrowserRouter} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import { QueryClient,QueryClientProvider } from 'react-query';
 import 'react-alice-carousel/lib/alice-carousel.css';
 

@@ -45,6 +45,7 @@ useQuery(
   },
   {
     onSuccess: (res) => {
+      // let response = res?.data?.map((value) => value.name)
       setList(res?.data || [])
     }
   }
@@ -112,8 +113,8 @@ const onSelect = (target) => {
     value={def}
     onChange={onSelect} >
       {
-        list.map((value,index)=>{
-          return <Option key={index} value={index+1}>{value}</Option>
+        list.map((value)=>{
+          return <Option key={value.id} value={value.id}>{value.name}</Option>
         })
       }
     </Select>

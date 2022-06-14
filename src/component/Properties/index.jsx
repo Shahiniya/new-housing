@@ -17,7 +17,7 @@ export const Properties = () => {
   const {request} = useHttp();
   useQuery(
     ['get data', search],
-   ()=>  request({url:`/v1/houses/list${search}`,token:true}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
+   ()=>  request({url:`/v1/houses/list${search}`}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
       
   ,
       {
