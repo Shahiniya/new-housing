@@ -10,7 +10,7 @@ export const Myproperties = () => {
   const {request} = useHttp();
   const navigate = useNavigate();
 
-   const {data:{data}} = useQuery('getMyproperties', (res) => {
+   const {data} = useQuery('getMyproperties', (res) => {
       return request({url:'/v1/houses/me', token: true})
     },
     // {onSuccess:(res) => {console.log(res)
@@ -28,7 +28,7 @@ export const Myproperties = () => {
     </Section>
     <Container>
       {
-        data?.map((value) => {
+        data?.data?.map((value) => {
           return <Card info={value} key={value.id}/>
         }
       )}

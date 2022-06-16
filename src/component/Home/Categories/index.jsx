@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Category = ({value})=>{
-
+console.log(value,'value')
   const navigate = useNavigate();
   const goto = () =>{
     navigate(`/properties?category_id=${value.id}`);
@@ -43,6 +43,7 @@ export const Categories = () => {
  .then((res)=> res.json()), 
  {
   onSuccess: (res) => {
+    
      let response = res?.data?.map((value) => (
       <Category key={value.id} value={value} />
     ));
