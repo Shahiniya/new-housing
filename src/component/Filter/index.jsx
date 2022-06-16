@@ -1,8 +1,8 @@
-import React,{useEffect, useRef,useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Container, Wrapper,Icon, Advanced, Section } from './style';
 import {Button,Input} from '../Generic';
 import {Popover,Select} from 'antd';
-import { useNavigate ,useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useSearch from '../../hooks/useSearch';
 import UseReplace from '../../hooks/useReplace';
 import { useQuery } from 'react-query';
@@ -16,7 +16,7 @@ export const Filter = () => {
   const [def,setDef] = useState(Number(query.get('category_id')));
 
   useEffect(()=>{
-    let res = list.filter((value,index)=> index == Number( query.get('category_id')))
+    let res = list.filter((value,index)=> index === Number( query.get('category_id')))
     res && setDef( res[0]
       )
   },[])

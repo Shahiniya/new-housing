@@ -23,8 +23,22 @@ export const Navbar = () => {
                              </Link>))
                     })}
                 </NavbarBody>
-                
-                <Button  onClick={() => navigate('/signin')} width={'120px'}>Login</Button>
+                {
+                    localStorage.getItem('token') ?(
+                        <>
+                    <h1 style={{color:'white'}} onClick={()=>navigate('/myproperties')}>Profile</h1>
+                    <Button  onClick={() =>{ 
+                    localStorage.clear()
+                     navigate('/home')
+                    }} width={'120px'}>
+                    Log Out
+                    </Button>
+                    
+                    </>
+                    ) : (<Button  onClick={() => navigate('/signin')} width={'120px'}>
+                    Login
+                    </Button>
+                 )}
                 
             </NavbarWrapper>
         </Container>

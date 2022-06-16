@@ -3,9 +3,8 @@ import Generic from '../pages/Generic'
 import Properties from '../pages/Properties'
 import Signin from '../pages/Signin';
 import SelectedHouse from '../pages/SelectedHouse';
-
-
-
+import Myproperties from '../pages/Myproperties';
+import AddNew from '../pages/AddNew'
 
 export const navbar = [
     {
@@ -63,5 +62,27 @@ export const navbar = [
         search:'?',
         hidden:true,
         priate:false,
-    }
+    },
+    {
+        id:4,
+        title: 'My Properties',
+        path:'/myproperties',
+        Element:<Myproperties/>,
+        search:'?',
+        hidden:true,
+        priate:false,
+        useParams:true,
+
+    },
+    {
+        id:4,
+        title: 'Add New',
+        path:'/properties/addnew',
+        Element:<AddNew/>,
+        search:'?',
+        hidden:true,
+        priate:false,
+        useParams:true,
+
+    },
 ]

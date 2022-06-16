@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 import uy4 from '../../../assets/image/uy4.png'
 import {useHttp} from  '../../../hooks/usehttp'
 import { useNavigate } from 'react-router-dom';
-//  const {REACT_BASE_APP_URL: url} = process.env 
+ const {REACT_BASE_APP_URL: url} = process.env 
 
 
 // const getIcon = (type) =>{
@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Category = ({value,id})=>{
+const Category = ({value})=>{
 
   const navigate = useNavigate();
   const goto = () =>{

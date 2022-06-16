@@ -9,12 +9,14 @@ export const useHttp = () => {
     token = false,
   }) => {
     if (token) {
-      headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
-    }
+           headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+           headers["Content-type"] = `application/json`;
+             }
 
+    let bd = await method === 'POST' ? JSON.stringify(body) :body;
     let res = await fetch(`${REACT_APP_BASE_URL}${url}`, {
       method,
-      body,
+      body:bd ,
       headers,
     }).then((res) => res.json());
     if (res?.success) {
