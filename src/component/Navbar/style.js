@@ -75,4 +75,10 @@ const Body = styled.div`
     display:flex;
     width:100%;
 `;
-export { Wrapper,Logo,Link,NavbarBody,Container,Body,NavbarWrapper }
+
+const Profile = styled.div`
+    font-size:20px;
+    font-weight:400;
+    margin:10px;
+`;
+export { Wrapper,Profile,Logo,Link,NavbarBody,Container,Body,NavbarWrapper }

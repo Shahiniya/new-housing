@@ -12,6 +12,7 @@ const getType = (type) =>{
                 background:'#0061df',
                 color:'#ffffff',
                 border:'none',
+                width:'170px',
             }
         default :
             return {

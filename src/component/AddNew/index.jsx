@@ -3,13 +3,26 @@ import { Container,Section,Wrapper  } from './style'
 import { Input,Button } from '../Generic';
 import { GoogleMap, useJsApiLoader ,Marker} from '@react-google-maps/api';
 import {useHttp} from '../../hooks/usehttp';
-import {useMutation} from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import {useMutation, useQuery} from 'react-query';
+import { useNavigate,useParams } from 'react-router-dom';
+import {message} from 'antd'
 
 
 
 export const AddNew = () => {
+  const [data,setData] = useState({});
+  const {id} = useParams();
   const {request} = useHttp();
+
+  useQuery('getSingle Item', ()=>{
+   return id && request({url:`/v1/houses/${id}`, token:true},
+   ),{
+    onSuccess:(res)=>{
+      console.log(res,'res')
+      setData(res?.data)
+    }}
+  })
+
   const navigate = useNavigate();
   const [center,setCenter] = useState({
     lat: 41.2995,
@@ -17,7 +30,7 @@ export const AddNew = () => {
   });
 
   const containerStyle = {
-    width: '400px',
+    width: '100%',
     height: '600px'
   };
   // const center = {
@@ -53,14 +66,14 @@ export const AddNew = () => {
   request({url:'/v1/houses',
   method:'POST',token:true,
    body:{
-    "address": "Webbrain online",
+    "address": "",
     "attachments": [
       {
-        "imgPath": "https://assets.entrepreneur.com/content/3x2/2000/1591900317-GettyImages-1137516784.jpg"
+        "imgPath": ""
       }
     ],
     "categoryId": 0,
-    "city": "Earth",
+    "city": " ",
     "componentsDto": {
       "additional": "string",
       "airCondition": true,
@@ -70,8 +83,8 @@ export const AddNew = () => {
       "internet": true,
       "tv": true
     },
-    "country": "Uzbekistan",
-    "description": "uyni biri",
+    "country": "",
+    "description": "",
     "favorite": true,
     "homeAmenitiesDto": {
       "additional": "string",
@@ -104,8 +117,28 @@ export const AddNew = () => {
     "status": true,
     "zipCode": "123654789"
   }
-}))
+}));
+
+
+const {mutate:update} = useMutation((id)=>{
+  return id && request({url:`/v1/houses${id}`,method :'PUT',
+  token:true,
+  body:data
+})
+});
+
+
 const onSubmit = () =>{
+  if(id){
+    update(id,{
+      onSuccess:(res)=>{
+        if(res?.success){
+          message.info('updated')
+          navigate(`/myproperties`)
+        }
+      }
+    })
+  } else{
  mutate('',{
    onSuccess: (res) => {
      console.log(res);
@@ -113,15 +146,25 @@ const onSubmit = () =>{
        navigate('/myproperties')
      }
    }
- })
-}
+ })}
+};
 
+
+ const onChange = ({target:name,value})=>{
+    setData({...data,
+    [name]:value,
+    });
+
+ }
   return (
     <Container>
       <Section>
         <div className='subtitle' >Contact Information</div>
         <Wrapper>
-           <Input  placeholder={'Property Title'}  />
+           <Input name='address'
+            onChange={onChange} 
+            value={data?.address} 
+             placeholder={'Property Title'}  />
            <Input  placeholder={'Category'}  />
         </Wrapper>
         <Wrapper>
@@ -131,9 +174,9 @@ const onSubmit = () =>{
         <Section>
         <div className='subtitle' >Additional</div>
           <Wrapper>
-          <Input placeholder={'bath'} />
-          <Input placeholder={'bed'} />
-          <Input placeholder={'garage'} />          
+          <Input value={data?.houseDetails?.bath} placeholder={'bath'} />
+          <Input value={data?.houseDetails?.bed} placeholder={'bed'} />
+          <Input value={data?.houseDetails?.garage} placeholder={'garage'} />          
           </Wrapper>
           <Wrapper>
           <Input placeholder={'Year build'} />

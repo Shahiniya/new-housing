@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Category = ({value})=>{
-console.log(value,'value')
+// console.log(value,'value')
   const navigate = useNavigate();
   const goto = () =>{
     navigate(`/properties?category_id=${value.id}`);

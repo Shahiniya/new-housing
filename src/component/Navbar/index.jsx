@@ -1,9 +1,11 @@
 import React from 'react'
 import  {navbar} from '../../utils/navbar';
 import { Wrapper,Logo,Container, Body, 
-    NavbarWrapper, NavbarBody,Link } from './style';
+    NavbarWrapper, NavbarBody,Link, Profile } from './style';
 import {useNavigate, Outlet} from 'react-router-dom';
 import {Button} from '../Generic/Button/index' 
+import {Footer} from '../Footer'
+
 export const Navbar = () => {
  const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ export const Navbar = () => {
                 {
                     localStorage.getItem('token') ?(
                         <>
-                    <h1 style={{color:'white'}} onClick={()=>navigate('/myproperties')}>Profile</h1>
+                    <Profile style={{color:'white'}} onClick={()=>navigate('/myproperties')}>Profile</Profile>
                     <Button  onClick={() =>{ 
                     localStorage.clear()
                      navigate('/home')
@@ -46,6 +48,7 @@ export const Navbar = () => {
         <Body>
             <Outlet/>
         </Body>
+        <Footer/>
     </Wrapper>
   )
 }

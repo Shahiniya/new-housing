@@ -5,6 +5,8 @@ import Signin from '../pages/Signin';
 import SelectedHouse from '../pages/SelectedHouse';
 import Myproperties from '../pages/Myproperties';
 import AddNew from '../pages/AddNew'
+// import Footer from '../pages/Footer'
+
 
 export const navbar = [
     {
@@ -14,7 +16,7 @@ export const navbar = [
         Element:<Home/>,
         search:'?',
         hidden:false,
-        priate:false,
+        private:false,
     },
     {
         id:2,
@@ -23,66 +25,88 @@ export const navbar = [
         Element:<Properties/>,
         search:'?',
         hidden:false,
-        priate:false,
+        private:false,
     },
     {
-        id:2,
+        id:3,
         title: 'Selected House',
         path:'/properties/:id',
         Element:<SelectedHouse/>,
         search:'?',
         hidden:true,
-        priate:false,
+        private:false,
         useParams:true,
 
     },
     {
-        id:3,
+        id:4,
         title: 'Contacts',
         path:'/contacts',
         Element:<Generic/>,
         search:'?',
         hidden:false,
-        priate:false,
+        private:false,
     },
     {
-        id:4,
+        id:5,
         title: 'Signin',
         path:'/signin',
         Element:<Signin/>,
         search:'?',
         hidden:true,
-        priate:false,
+        private:false,
     },
     {
-        id:4,
+        id:6,
         title: 'Signup',
         path:'/signup',
         Element:<Generic/>,
         search:'?',
         hidden:true,
-        priate:false,
+        private:false,
     },
     {
-        id:4,
+        id:7,
         title: 'My Properties',
         path:'/myproperties',
         Element:<Myproperties/>,
         search:'?',
         hidden:true,
-        priate:false,
+        private:false,
         useParams:true,
 
     },
     {
-        id:4,
+        id:8,
         title: 'Add New',
         path:'/properties/addnew',
         Element:<AddNew/>,
         search:'?',
         hidden:true,
-        priate:false,
+        private:false,
         useParams:true,
 
     },
+    {
+        id:9,
+        title: 'Edit item',
+        path:'/properties/addnew/:id',
+        Element:<AddNew/>,
+        search:'?',
+        hidden:true,
+        private:false,
+        useParams:true,
+
+    },
+    // {
+    //     id:10,
+    //     title: 'Footer',
+    //     path:'/footer',
+    //     Element:<Footer/>,
+    //     search:'?',
+    //     hidden:true,
+    //     private:false,
+    //     useParams:true,
+
+    // },
 ]

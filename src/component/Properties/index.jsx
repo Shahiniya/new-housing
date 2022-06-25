@@ -41,8 +41,8 @@ const onSelect = (id)=>{
         {data?.length} Total
     </Total>
     <Wrapper>
-     {data.map((value) => {
-      return <Card onClick={()=>onSelect(value.id)} key={value.id} info={value} />
+     {data.map(({value,id}) => {
+      return <Card onClick={()=>onSelect(value.id)} key={id} info={value} />
      })}
       
     </Wrapper>
