@@ -1,52 +1,49 @@
-import React, { useState } from 'react'
-import Card from '../Card';
-import Filter from '../Filter';
-import { Container,Total, Wrapper} from './style';
-import {useQuery} from 'react-query'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useHttp } from '../../hooks/usehttp';
-// import useSearch from '../../hooks/useSearch';
+import React, { useState } from "react";
+import Filter from "../Filter";
+import { Container, Total, Wrapper } from "./style";
+import { Card } from "../Card";
+import { useQuery } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useHttp } from "../../hooks/usehttp";
 
-
-const {REACT_APP_BASE_URL:url} = process.env;
 export const Properties = () => {
+  const naviget = useNavigate();
 
-  const [data,setData] = useState([])
-  const {search} = useLocation();
-  const navigate = useNavigate();
-  const {request} = useHttp();
+  const [data, setData] = useState([]);
+  const { search } = useLocation();
+  const { request } = useHttp();
+
   useQuery(
-    ['get data', search],
-   ()=>  request({url:`/v1/houses/list${search}`}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
-      
-  ,
-      {
-        onSuccess:(res)=> {
-        
-          setData(res?.data || []);
-        }
-      })
-// console.log(data,'res');
+    ["get data", search],
+    () => request({ url: `/v1/houses/list/${search}` }),
 
-const onSelect = (id)=>{
- navigate(`/properties/:${id}`)
-}
+    {
+      onSuccess: (res) => {
+        setData(res?.data || []);
+      },
+    }
+  );
+
+  const onSelect = (id) => {
+    naviget(`/properties:${id}`);
+  };
+
   return (
     <Container>
-    
-    <Filter/>
-      <div className='title' >Properties</div>
-      <div className='description center' >Siz orzu qilgan,siz izlagan shinam va arzon uylar</div>
-    <Total className='description'>
-        {data?.length} Total
-    </Total>
-    <Wrapper>
-     {data.map(({value,id}) => {
-      return <Card onClick={()=>onSelect(value.id)} key={id} info={value} />
-     })}
-      
-    </Wrapper>
-     </Container>
-  )
-}
+      <Filter />
+      <div className="title">Properties</div>
+      <div className="discription center">
+        Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
+      </div>
+      <Total className="description">{data?.length}Total</Total>
+      <Wrapper>
+        {data?.map((value, i) => {
+          return (
+            <Card key={i} onClick={() => onSelect(value.id)} info={value} />
+          );
+        })}
+      </Wrapper>
+    </Container>
+  );
+};
 export default Properties;
