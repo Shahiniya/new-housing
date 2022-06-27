@@ -5,10 +5,8 @@ import { Container,Total, Wrapper} from './style';
 import {useQuery} from 'react-query'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useHttp } from '../../hooks/usehttp';
-// import useSearch from '../../hooks/useSearch';
 
 
-const {REACT_APP_BASE_URL:url} = process.env;
 export const Properties = () => {
 
   const [data,setData] = useState([])
@@ -16,33 +14,26 @@ export const Properties = () => {
   const navigate = useNavigate();
   const {request} = useHttp();
   useQuery(
-    ['get data', search],
+    ['', search],
    ()=>  request({url:`/v1/houses/list${search}`}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
-      
-  ,
-      {
-        onSuccess:(res)=> {
-        
-          setData(res?.data || []);
-        }
+   ,{
+        onSuccess:(res)=> setData(res?.data || [])
       })
-// console.log(data,'res');
 
 const onSelect = (id)=>{
- navigate(`/properties/:${id}`)
+ navigate(`/properties:${id}`)
 }
   return (
     <Container>
-    
-    <Filter/>
+      <Filter/>
       <div className='title' >Properties</div>
       <div className='description center' >Siz orzu qilgan,siz izlagan shinam va arzon uylar</div>
     <Total className='description'>
         {data?.length} Total
     </Total>
     <Wrapper>
-     {data.map(({value,id}) => {
-      return <Card onClick={()=>onSelect(value.id)} key={id} info={value} />
+     {data?.map(({value,i}) => {
+      return( <Card key={i} onClick={()=>onSelect(value.id)}  info={value} />)
      })}
       
     </Wrapper>

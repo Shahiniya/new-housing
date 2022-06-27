@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as telg } from '../../assets/icon/twitter.svg';
+// import { ReactComponent as telg } from '../../assets/icon/twitter.svg';
 import { ReactComponent as logo } from '../../assets/icon/logo.svg';
 const BigWrapper = styled.div`
 height:580px;

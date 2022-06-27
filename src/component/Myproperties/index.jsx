@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { useQuery,useMutation } from 'react-query'
 import { Container,Table, Section, Wrapper, Tr,Th,Td,Icons } from './style';
 import { useHttp } from '../../hooks/usehttp';
-import { Card } from '../Card';
+// import { Card } from '../Card';
 import { useNavigate } from 'react-router-dom';
 import {Button} from '../../component/Generic/Button'
 import {Popconfirm,message} from 'antd'

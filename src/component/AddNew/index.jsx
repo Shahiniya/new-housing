@@ -15,8 +15,9 @@ export const AddNew = () => {
   const {request} = useHttp();
 
   useQuery('getSingle Item', ()=>{
-   return id && request({url:`/v1/houses/${id}`, token:true},
-   ),{
+   return id && request({url:`/v1/houses/${id}`, token:true}
+   ),
+   {
     onSuccess:(res)=>{
       console.log(res,'res')
       setData(res?.data)

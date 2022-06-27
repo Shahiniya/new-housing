@@ -1,13 +1,12 @@
 import React, { useRef,useState } from 'react'
 import { Container, Wrapper, 
     CategoryWrapper, Img, ArrowLeft, Cards,Details, ArrowRight} from './style'
-// import Card from '../../Card';
 import AliceCarousel from 'react-alice-carousel';
 import { useQuery } from 'react-query';
 import uy4 from '../../../assets/image/uy4.png'
 import {useHttp} from  '../../../hooks/usehttp'
 import { useNavigate } from 'react-router-dom';
- const {REACT_BASE_APP_URL: url} = process.env 
+//  const {REACT_BASE_APP_URL: url} = process.env 
 
 
 // const getIcon = (type) =>{
@@ -20,37 +19,60 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Category = ({value})=>{
-// console.log(value,'value')
-  const navigate = useNavigate();
-  const goto = () =>{
-    navigate(`/properties?category_id=${value.id}`);
-  };
-  return(
-      <CategoryWrapper onClick={goto}>
-       <Img src={uy4} alt = 'test' />
-       <Details>{value}</Details>
-      </CategoryWrapper>
-  )
-}; 
+// const Category = ({value})=>{
+//   const navigate = useNavigate();
+//   const goto = () =>{
+//     navigate(`/properties?category_id=${value.id}`);
+//   };
+//   return(
+//       <CategoryWrapper onClick={goto}>
+//        <Img src={uy4} alt = 'test' />
+//        <Details>{value}</Details>
+//       </CategoryWrapper>
+//   )
+// }; 
 
-export const Categories = () => {
-  const slider = useRef();
- const [list,setList] = useState([])
- const { request } = useHttp();
+// export const Categories = () => {
+//   const slider = useRef();
+//  const [list,setList] = useState([])
+//  const { request } = useHttp();
 
- useQuery("", () => request({ url:`/v1/categories/list` })
- .then((res)=> res.json()), 
- {
-  onSuccess: (res) => {
+//  useQuery("", () => request({ url:`/v1/categories/list` })
+//  .then((res)=> res.json()), 
+//  {
+//   onSuccess: (res) => {
     
-     let response = res?.data?.map((value) => (
-      <Category key={value.id} value={value} />
-    ));
-    setList(response || []);
-    console.log(res, 'res')
-  },
-});
+//      let response = res?.data?.map((value) => (
+//       <Category key={value.id} value={value} />
+//     ));
+//     setList(response || []);
+//     console.log(res, 'res')
+//   },
+// });
+export const Categories = ()=>{
+  
+  const Category = ({category})=>{
+    <CategoryWrapper onClick={()=>navigate(`properties?category_id=${ category.id}`)}>
+    <Img src={uy4} alt='test'/>
+    <Details>{category?.name}</Details>
+    </CategoryWrapper>
+  }
+
+  const navigate=useNavigate();
+  const [list,setList] = useState();
+  const {request} = useHttp();
+  const slider = useRef();
+
+
+  useQuery('',
+  ()=>
+    request({url:'/v1/categories/list'}),
+{
+  onSuccess: (res)=> {
+    if(res?.data){setList(res?.data || [])}
+  }
+}
+      )
 
   return (
     <Container>
@@ -79,6 +101,5 @@ export const Categories = () => {
     </Container>
 )}
 export default Categories;
-
 
 

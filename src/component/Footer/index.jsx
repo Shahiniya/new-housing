@@ -10,9 +10,9 @@ export const Footer = () => {
            <ContactUs>
             <h4>Contact Us</h4>
                 { 
-                    footer.map((value)=>{
+                    footer.map((value,i)=>{
                         return(
-                            <Contacts key={value.id}>
+                            <Contacts key={i}>
                             <Img src={value.src} alt='tets'/>
                             <h6>{value.title}</h6>
                             </Contacts>
@@ -21,9 +21,9 @@ export const Footer = () => {
                 }
                 <LinksWrapper>
                 {
-                    footer1.map((value)=>{
+                    footer1.map((value,i)=>{
                         return(
-                            <Links key={value.id}>
+                            <Links key={i}>
                                 <Img src={value.src}/>
                             </Links>
                         )
