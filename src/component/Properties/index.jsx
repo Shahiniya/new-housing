@@ -34,6 +34,7 @@ export const Properties = () => {
         Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
       </div>
       <Total className="description">{data?.length}Total</Total>
+      <Total className="description">{data?.length}Total</Total>
       <Wrapper>
         {data?.map((value, i) => {
           return (
