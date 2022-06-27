@@ -68,11 +68,4 @@ const Inputs = styled.div`
   }
 `;
 
-// const Advanced = styled.div`
-//   width: fit-content;
-//   height: fit-content;
-//   background: #fff;
-//   border-radius: 5px;
-//   padding: 10px;
-// `;
 export { Container, Wrapper, Icon, Advanced, Section, Inputs };

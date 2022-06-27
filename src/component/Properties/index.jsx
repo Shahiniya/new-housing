@@ -7,24 +7,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useHttp } from "../../hooks/usehttp";
 
 export const Properties = () => {
-  const naviget = useNavigate();
-
   const [data, setData] = useState([]);
   const { search } = useLocation();
   const { request } = useHttp();
 
   useQuery(
-    ["get data", search],
-    () => request({ url: `/v1/houses/list/${search}` }),
-
+    ["", search],
+    () => {
+      return request({ url: `/v1/houses/list${search}` });
+    },
     {
-      onSuccess: (res) => {
-        setData(res?.data || []);
-      },
+      onSuccess: (res) => setData(res.data || []),
     }
   );
+  const naviget = useNavigate();
 
-  const onSelect = (id) => {
+  const onClick = (id) => {
     naviget(`/properties:${id}`);
   };
 
@@ -39,7 +37,7 @@ export const Properties = () => {
       <Wrapper>
         {data?.map((value, i) => {
           return (
-            <Card key={i} onClick={() => onSelect(value.id)} info={value} />
+            <Card key={i} onClick={() => onClick(value.id)} info={value} />
           );
         })}
       </Wrapper>
