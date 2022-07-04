@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Card from '../Card';
 import Filter from '../Filter';
 import { Container,Total, Wrapper} from './style';
@@ -6,16 +6,15 @@ import {useQuery} from 'react-query'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useHttp } from '../../hooks/usehttp';
 
-
-export const Properties = () => {
-
-  const [data,setData] = useState([])
-  const {search} = useLocation();
+export const Properties =()=>{
+  const [data, setData] = useState([]);
+  const { search } = useLocation();
+  const { request } = useHttp();
   const navigate = useNavigate();
-  const {request} = useHttp();
   useQuery(
+
     ['', search],
-   ()=>  request({url:`/v1/houses/list${search}`}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
+   ()=>request({url:`/v1/houses/list${search}`}) // return fetch(`${url}/v1/houses/list${search}`).then((res)=> res.json());
    ,{
         onSuccess:(res)=> setData(res?.data || [])
       })
@@ -39,5 +38,4 @@ const onSelect = (id)=>{
     </Wrapper>
      </Container>
   )
-}
-export default Properties;
+    };export default Properties;

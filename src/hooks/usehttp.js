@@ -4,25 +4,28 @@ export const useHttp = () => {
   const request = async ({
     url = "",
     method = "GET",
-    body = null,
     headers = {},
+    body = null,
     token = false,
   }) => {
     if (token) {
-           headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
-           headers["Content-type"] = `application/json`;
-             }
+      headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+      headers["Content-Type"] = "application/json";
+    }
 
-    let bd = await method === 'POST' || await method === 'PUT' ? JSON.stringify(body) :body;
+    let bd =await method === "POST" || method === "PUT"
+        ? JSON.stringify(body)
+        : body;
+
     let res = await fetch(`${REACT_APP_BASE_URL}${url}`, {
       method,
-      body:bd ,
+      body: bd,
       headers,
     }).then((res) => res.json());
-    if (res?.success) {
-      return res; 
-    } else return new Error(res?.message || "Something was wrong");
-    
+    if (res.success) {
+      console.log(res);
+      return res;
+    } else return new Error(res?.message || "something was wrong");
   };
 
   return { request };
